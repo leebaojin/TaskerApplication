@@ -65,8 +65,9 @@ public class TaskManagerResource {
 	@GET
 	@Path("/get/{id}")
 	@UnitOfWork
-	public Task getTaskById(@PathParam("id") UUID id) {
-		Task task = taskdao.findById(id);
+	public Task getTaskById(@PathParam("id") String id) {
+		UUID uuid = UUID.fromString(id);
+		Task task = taskdao.findById(uuid);
 		if(task == null) {
 			throw new WebApplicationException("No such task found", Status.BAD_REQUEST);
 		}

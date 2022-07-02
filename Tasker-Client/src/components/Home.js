@@ -146,9 +146,9 @@ console.log(e);
 
       <div className="createButtonContainer">
         {displayformstatus ?
-          <button className="createButtonNegative" onClick={(e) => displayForm(e)}>-</button>
+          <button className="createButtonNegative" id="createButtonNegative" onClick={(e) => displayForm(e)}>-</button>
           :
-          <button className="createButton" onClick={(e) => displayForm(e)}>NEW</button>
+          <button className="createButton" id="createButton" onClick={(e) => displayForm(e)}>NEW</button>
         }
       </div>
       {displayformstatus ?
@@ -168,7 +168,7 @@ console.log(e);
               name="description"
             />
             {descInputErr ? 
-            <p className="errMsg">*Cannot be empty</p>:""}
+            <p className="errMsg" id="errMsgDesc">*Cannot be empty</p>:""}
 
             <label htmlFor="date" className="formlabel">
               Date
@@ -183,9 +183,9 @@ console.log(e);
               name="date"
             />
             {dateInputErr ? 
-            <p className="errMsg">*Invalid Date Input. Input should be yyyy-mm-dd</p>:""}
+            <p className="errMsg" id="errMsgDate">*Invalid Date Input. Input should be yyyy-mm-dd</p>:""}
             <div className="buttonContainer">
-              <button className="saveButton" onClick={(e)=>addTask(e)}>Save</button>
+              <button className="saveButton" id="saveButton" onClick={(e)=>addTask(e)}>Save</button>
             </div>
 
           </form>
@@ -201,14 +201,16 @@ console.log(e);
 
       <div className="tasklistcontainer">
         {taskList && taskList.map((task, index) => (
-          <div className="tasklist">
+          <div className="tasklist" id={"tasklist"+index.toString()}>
 
             <div className="displaytask">
-              <p><span className="displayDesc">{task.taskDescription}</span></p>
-              <p> {calendarEle} {getDate(task.taskDate)}</p>
+              <p><span className="displayDesc" id={"taskDispDesc"+index.toString()}>{task.taskDescription}</span></p>
+              <p id={"taskDispDate"+index.toString()}> {calendarEle} {getDate(task.taskDate)}</p>
             </div>
             <div className="displaycheckbox">
-              <input className="checktask" type="checkbox" name="checkbox" value={index} onChange={(e) => selectTask(e)} defaultChecked={task.taskCompleted} />
+              <input className="checktask" type="checkbox" name="checkbox" value={index} 
+              id={"taskCheckBox"+index.toString()}
+              onChange={(e) => selectTask(e)} defaultChecked={task.taskCompleted} />
 
 
             </div>
@@ -222,7 +224,7 @@ console.log(e);
       </div>
       <br />
         <div className="createButtonContainer">
-        <button className="clearButton" onClick={(e) => deleteCompletedTask(e)}>Clear Completed</button>
+        <button className="clearButton" id="clearButton" onClick={(e) => deleteCompletedTask(e)}>Clear Completed</button>
         
         
       </div>

@@ -1,0 +1,32 @@
+{
+  "name": "autom8able-mochajs-starter",
+  "version": "1.0.0",
+  "description": "A MochaJS starter package from https://autom8able.com",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha",
+    "test:awesome": "mocha --reporter mochawesome || true"
+  },
+  "keywords": [],
+  "author": "Mitch Allen (mitchallen.com)",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^7.2.0",
+    "mochawesome": "^7.1.3"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mitchallen/autom8able-mochajs-starter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mitchallen/autom8able-mochajs-starter/issues"
+  },
+  "homepage": "https://github.com/mitchallen/autom8able-mochajs-starter#readme",
+  "dependencies": {
+    "chai": "^4.3.6",
+    "chai-http": "^4.3.0"
+  }
+}
