@@ -1,156 +1,225 @@
-
-
-.wrapper{
-    margin-left:auto;
-    margin-right:auto;
-    width:95%;
-}
-.heading{
-    border:1px solid black;
-    width:100%;
-    text-align:left;
-  }
-.errMsg{
-    font-size:12px;
-    color:red;
+/*******To hold entire page*******/
+.wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  width: 95%;
 }
 
-  .createButtonContainer{
-    width:96%;
-    text-align:right;
-  }
+/******* Header *******/
+.heading {
+  border: 1px solid black;
+  width: 100%;
+  text-align: left;
+}
 
-  .createButton{
-    
-    background-color:white;
-    border-color: #DDDDE0;
-    border-radius:5px;
-    width:80px;
-    height: 40px;
-  }
-  .createButtonNegative{
-    background-color:white;
-    border-color: #DDDDE0;
-    border-radius:5px;
-    width:80px;
-    height: 40px;
-    font-size:24px;
-    font-weight:800;
-  }
+/****** Button to display create new task *******/
+.createButtonContainer {
+  width: 96%;
+  text-align: right;
+}
+.createButton {
+  background-color: white;
+  border-color: #DDDDE0;
+  border-radius: 5px;
+  width: 80px;
+  height: 40px;
+}
+.createButtonNegative {
+  background-color: white;
+  border-color: #DDDDE0;
+  border-radius: 5px;
+  width: 80px;
+  height: 40px;
+  font-size: 24px;
+  font-weight: 800;
+}
 
 
+/******* Create New Task Form ********/
+.createContainer {
+  border: 1px solid #DDDDE0;
+  width: 90%;
+  padding: 3%;
+  margin-top: 20px;
+}
+.createContainerHead {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+.formlabel {
+  display: block;
+  font-weight: bold;
+  color: #91867E;
+  font-size: 18px;
+  margin-top: 20px;
+}
+.formtextinput {
+  font-size: 18px;
+  padding: 5px;
+  width: 95%;
+}
+.formContainer {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+/*Save button */
+.buttonContainer {
+  margin-top: 20px;
+  width: 97%;
+  text-align: right;
+}
+.saveButton {
+  padding: 10px 20px 10px 20px;
+  font-size: 18px;
+  background-color: #3E4144;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+/* error message */
+.errMsg {
+  font-size: 12px;
+  color: red;
+}
+
+
+
+/******* Display list of task *******/
+.tasklistcontainer {
+  border: 1px solid #DDDDE0;
+  width: 90%;
+  padding: 3%;
+  height: 350px;
+  overflow: auto;
+
+}
+.tasklist {
+  border: 2px solid #DDDDE0;
+  border-radius: 5px;
+  margin-top: 10px;
+  min-width: 120px;
+  padding: 0px;
+  vertical-align: middle;
+  text-align: left;
+}
+/*Display task description and date*/
+.displaytask {
+  display: inline-block;
+  width: 80%;
+  padding: 5px 10px 5px 15px;
+  height: 100px;
+}
+.displayDesc {
+  font-weight: bold;
+  font-size: 18px;
+
+}
+/*Checkbox*/
+.displaycheckbox {
+  display: inline-flex;
+  width: 10%;
+  height: 100px;
+  vertical-align: top;
+
+  margin: 0px;
+  text-align: center;
+}
+input.checktask {
+  height: 20px;
+  width: 20px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/******* Clear BUtton *******/
+.clearButton {
+  background-color: rgba(255, 0, 0, 0.611);
+  border-color: #DDDDE0;
+  border-radius: 5px;
+  width: 120px;
+  height: 40px;
+}
+
+
+/* For Checkbox */
+
+/* The container */
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   
-  .tasklistcontainer{
-    border:1px solid #DDDDE0;
-    width:90%;
-    padding:3%;
-    height:350px;
-    overflow:auto;
-    
-  }
-
-  .tasklist{
-    border:2px solid #DDDDE0;
-    border-radius:5px;
-    margin-top:10px;
-    min-width:120px;
-    padding:0px;
-    vertical-align:middle;
-    text-align:left;
-  }
-
-  .displaytask{
-    display:inline-block;
-    width:80%;
-    padding:5px 10px 5px 15px;
-    height:100px;
-
-  }
-
-  .displaycheckbox{
-    display:inline-flex;
-    width:10%;
-    height:100px;
-    vertical-align:top;
-
-    margin:0px;
-    text-align:center;
-  }
-
-  .displayDesc{
-    font-weight:bold;
-    font-size:18px;
-    
-  }
-
-input.checktask{
-    height:20px;
-    width:20px;
-    margin-top:auto;
-    margin-bottom:auto;
-    margin-left:auto;
-    margin-right:auto;
-
-    
 }
 
-.createContainer{
-    border:1px solid #DDDDE0;
-    width:90%;
-    padding:3%;
-    margin-top:20px;
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
 
 }
 
-.createContainerHead{
-    margin-left:auto;
-    margin-right:auto;
-    text-align:center;
-    font-size:24px;
-    font-weight:bold;
-
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: white;
+  border:2px solid #DDDDE0;
+  border-radius:3px;
 }
 
-.formlabel{
-    display:block;
-    font-weight:bold;
-    color:#91867E;
-    font-size:18px;
-    margin-top:20px;
+/* On mouse-over, add a grey background color */
+.container:hover input~.checkmark {
+  background-color: #eee;
 }
 
-.formtextinput{
-    font-size:18px;
-    padding:5px;
-    width:95%;
+/* When the checkbox is checked, add a blue background */
+.container input:checked~.checkmark {
+  background-color: #45D13D;
 }
 
-.formContainer{
-    margin-left:auto;
-    margin-right:auto;
-    width:100%;
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
 }
 
-.buttonContainer{
-    margin-top:20px;
-    width:97%;
-    text-align:right;
+/* Show the checkmark when checked */
+.container input:checked~.checkmark:after {
+  display: block;
 }
 
-.saveButton{
-    padding:10px 20px 10px 20px;
-    font-size:18px;
-    background-color: #3E4144;
-    color:white;
-    border-radius:5px;
-    cursor:pointer;
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
-
-.clearButton{
-    
-    background-color:rgba(255, 0, 0, 0.611);
-    border-color: #DDDDE0;
-    border-radius:5px;
-    width:120px;
-    height: 40px;
-  }

@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const REQUEST_URL = "http://localhost:8080/api/taskmanager";
+ //const REQUEST_URL = "http://localhost:8080/api/taskmanager";
+const REQUEST_URL = "http://152.67.99.60:8085/api/taskmanager";
 class fiboService{
     getTaskList(){
       return axios.get(REQUEST_URL+"/list");

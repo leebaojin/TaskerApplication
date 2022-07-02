@@ -19,7 +19,7 @@ public class LocalTest extends BrowserStackTestNGTest {
 
         //Assert.assertTrue(driver.getPageSource().contains("Up and running"));
         //Check that the title is correct (correct page)
-        Assert.assertTrue(driver.getTitle().equals("React App"));
+        Assert.assertTrue(driver.getTitle().equals("Task Management"));
         
         //Get the New Button and click
         driver.findElement(By.id("createButton")).click();

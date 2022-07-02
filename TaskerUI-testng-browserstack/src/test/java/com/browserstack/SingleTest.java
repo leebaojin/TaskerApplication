@@ -1,6 +1,9 @@
 package com.browserstack;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
 import org.testng.Assert;
@@ -11,28 +14,97 @@ public class SingleTest extends BrowserStackTestNGTest {
     @Test
     public void test() throws Exception {
     	
-    	 driver.get("http://localhost:3000/");
+driver.get("http://150.230.10.235:3000/");
+        
+        String descInput = "To Complete The UI Testing. #001";
+        String dateInput = "2022-08-17";
 
-         Assert.assertTrue(driver.getTitle().equals("React App"));
-    	
-    	/*
-    	  // navigate to bstackdemo
-        driver.get("https://www.bstackdemo.com");
+        //Assert.assertTrue(driver.getPageSource().contains("Up and running"));
+        //Check that the title is correct (correct page)
+        Assert.assertTrue(driver.getTitle().equals("Task Management"));
         
-        // Check the title
-        Assert.assertTrue(driver.getTitle().matches("StackDemo"));
+        //Get the New Button and click
+        driver.findElement(By.id("createButton")).click();
         
-        // Save the text of the product for later verify
-        String productOnScreenText = driver.findElement(By.xpath("//*[@id=\"1\"]/p")).getText();
-        // Click on add to cart button
-        driver.findElement(By.xpath("//*[@id=\"1\"]/div[4]")).click();
+      //wait for some time
+        Thread.sleep(1000);
         
-        // See if the cart is opened or not
-        Assert.assertTrue(driver.findElement(By.className("float-cart__content")).isDisplayed());
+        //Find if the element for the form exist
+        WebElement descField = driver.findElement(By.id("description"));
+        WebElement dateField = driver.findElement(By.id("date"));
+        Assert.assertTrue(descField.isDisplayed());
+        Assert.assertTrue(dateField.isDisplayed());
         
-        // Check the product inside the cart is same as of the main page
-        String productOnCartText = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div[2]/div[2]/div[2]/div/div[3]/p[1]")).getText();
-        Assert.assertEquals(productOnScreenText, productOnCartText);
-        */
+        dateField.sendKeys("0a");
+        
+        //Save the input
+        driver.findElement(By.id("saveButton")).click();
+        
+      //wait for some time
+        Thread.sleep(3000);
+        
+        //Check for error messages
+        Assert.assertTrue(driver.findElement(By.id("errMsgDesc")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.id("errMsgDate")).isDisplayed());
+        
+        //Input valid values
+        descField.sendKeys(descInput);
+        dateField.sendKeys(Keys.BACK_SPACE,Keys.BACK_SPACE);
+        dateField.sendKeys(dateInput);
+        
+        driver.findElement(By.id("saveButton")).click();
+        
+        //wait for some time
+        Thread.sleep(5000);
+        
+        //Check that the fields are empty and error message is gone
+        Assert.assertTrue(driver.findElements(By.id("errMsgDesc")).size()==0);
+        Assert.assertTrue(driver.findElements(By.id("errMsgDate")).size()==0);
+        Assert.assertEquals(descField.getText(), "");
+        Assert.assertEquals(dateField.getText(), "");
+        
+        //Check that the new task is displayed
+        WebElement taskDesc = driver.findElement(By.id("taskDispDesc0"));
+        WebElement taskDate = driver.findElement(By.id("taskDispDate0"));
+        WebElement taskCompleted = driver.findElement(By.id("taskCheckBox0"));
+        Assert.assertEquals(taskDesc.getText(), descInput);
+        Assert.assertEquals(taskDate.getText(), dateInput);
+        Assert.assertFalse(taskCompleted.isSelected()); //Not selected
+        
+        //Close the new task box
+        driver.findElement(By.id("createButtonNegative")).click();
+        
+        //wait for some time
+        Thread.sleep(3000);
+        
+        //Check that element has disappeared
+        Assert.assertTrue(driver.findElements(By.id("description")).size()==0);
+        Assert.assertTrue(driver.findElements(By.id("date")).size()==0);
+        
+        //Click on the checkbox
+        taskCompleted.click();
+        
+      //wait for some time
+        Thread.sleep(3000);
+        
+        Assert.assertTrue(taskCompleted.isSelected()); //Selected
+        
+        //Delete completed task
+        driver.findElement(By.id("clearButton")).click();
+        
+      //wait for some time
+        Thread.sleep(5000);
+        
+        String desname= "taskDispDesc";
+        int i = 0;
+        List<WebElement> tasklistDesc = driver.findElements(By.id(desname + String.valueOf(i)));
+        while(tasklistDesc.size()>0) {
+        	if(tasklistDesc.get(0).getText()==descInput) {
+        		Assert.assertFalse(true);
+        		break;
+        	}
+        	i++;
+        	tasklistDesc = driver.findElements(By.id(desname + String.valueOf(i)));
+        }
     }
 }
