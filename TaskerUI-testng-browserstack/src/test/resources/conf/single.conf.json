@@ -1,7 +1,7 @@
 {
-  "server": "hub-cloud.browserstack.com",
-  "user": "BROWSERSTACK_USERNAME",
-  "key": "BROWSERSTACK_ACCESS_KEY",
+  "server": "hub.browserstack.com",
+  "user": "leebaojin_A3qbwI",
+  "key": "SgDGxJ6KHdXF5fJzQk2j",
 
   "capabilities": {
     "build": "browserstack-build-1",
@@ -11,7 +11,10 @@
 
   "environments": {
     "chrome": {
-      "browser": "chrome"
+      "browser": "chrome",
+      "browserVersion": "latest",
+      "os": "Windows",
+      "osVersion": "10"
     }
   }
 }

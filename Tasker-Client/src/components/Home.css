@@ -172,8 +172,10 @@ input.checktask {
   position: absolute;
   opacity: 0;
   cursor: pointer;
-  height: 0;
-  width: 0;
+  height: 1px;
+  width: 1px;
+  background-color:transparent;
+  color:transparent;
 
 }
 

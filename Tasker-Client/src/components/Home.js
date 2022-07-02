@@ -250,15 +250,13 @@ function Home() {
             </div>
 
             <div className="displaycheckbox">
-              
 
-            <label class="container">
+              <label className="container">
                 <input type="checkbox" onChange={(e) => selectTask(e)} value={index}
-                id={"taskCheckBox" + index.toString()} 
-                defaultChecked={task.taskCompleted} />
-                <span class="checkmark"></span>
+                  id={"taskCheckBox" + index.toString()}
+                  defaultChecked={task.taskCompleted} />
+                <span className="checkmark"></span>
               </label>
-
 
             </div>
           </div>

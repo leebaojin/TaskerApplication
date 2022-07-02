@@ -1,7 +1,8 @@
 const chai = require("chai");
 const chaiHttp = require("chai-http");
 const expect = chai.expect;
-const baseUrl = "http://localhost:8080/api/taskmanager"
+//const baseUrl = "http://localhost:8080/api/taskmanager";
+const baseUrl = "http://152.67.99.60:8085/api/taskmanager";
 
 chai.use(chaiHttp);
 describe("Tasker Test", function(){
