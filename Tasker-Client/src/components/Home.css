@@ -1,0 +1,156 @@
+
+
+.wrapper{
+    margin-left:auto;
+    margin-right:auto;
+    width:95%;
+}
+.heading{
+    border:1px solid black;
+    width:100%;
+    text-align:left;
+  }
+.errMsg{
+    font-size:12px;
+    color:red;
+}
+
+  .createButtonContainer{
+    width:96%;
+    text-align:right;
+  }
+
+  .createButton{
+    
+    background-color:white;
+    border-color: #DDDDE0;
+    border-radius:5px;
+    width:80px;
+    height: 40px;
+  }
+  .createButtonNegative{
+    background-color:white;
+    border-color: #DDDDE0;
+    border-radius:5px;
+    width:80px;
+    height: 40px;
+    font-size:24px;
+    font-weight:800;
+  }
+
+
+  
+  .tasklistcontainer{
+    border:1px solid #DDDDE0;
+    width:90%;
+    padding:3%;
+    height:350px;
+    overflow:auto;
+    
+  }
+
+  .tasklist{
+    border:2px solid #DDDDE0;
+    border-radius:5px;
+    margin-top:10px;
+    min-width:120px;
+    padding:0px;
+    vertical-align:middle;
+    text-align:left;
+  }
+
+  .displaytask{
+    display:inline-block;
+    width:80%;
+    padding:5px 10px 5px 15px;
+    height:100px;
+
+  }
+
+  .displaycheckbox{
+    display:inline-flex;
+    width:10%;
+    height:100px;
+    vertical-align:top;
+
+    margin:0px;
+    text-align:center;
+  }
+
+  .displayDesc{
+    font-weight:bold;
+    font-size:18px;
+    
+  }
+
+input.checktask{
+    height:20px;
+    width:20px;
+    margin-top:auto;
+    margin-bottom:auto;
+    margin-left:auto;
+    margin-right:auto;
+
+    
+}
+
+.createContainer{
+    border:1px solid #DDDDE0;
+    width:90%;
+    padding:3%;
+    margin-top:20px;
+
+}
+
+.createContainerHead{
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+    font-size:24px;
+    font-weight:bold;
+
+}
+
+.formlabel{
+    display:block;
+    font-weight:bold;
+    color:#91867E;
+    font-size:18px;
+    margin-top:20px;
+}
+
+.formtextinput{
+    font-size:18px;
+    padding:5px;
+    width:95%;
+}
+
+.formContainer{
+    margin-left:auto;
+    margin-right:auto;
+    width:100%;
+}
+
+.buttonContainer{
+    margin-top:20px;
+    width:97%;
+    text-align:right;
+}
+
+.saveButton{
+    padding:10px 20px 10px 20px;
+    font-size:18px;
+    background-color: #3E4144;
+    color:white;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.clearButton{
+    
+    background-color:rgba(255, 0, 0, 0.611);
+    border-color: #DDDDE0;
+    border-radius:5px;
+    width:120px;
+    height: 40px;
+  }
