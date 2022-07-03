@@ -15,7 +15,6 @@ public class TaskDAO extends AbstractDAO<Task>{
 
 	public TaskDAO(SessionFactory sessionFactory) {
 		super(sessionFactory);
-		// TODO Auto-generated constructor stub
 		this.sessionFactory = sessionFactory;
 	}
 	
@@ -32,8 +31,6 @@ public class TaskDAO extends AbstractDAO<Task>{
 	public UUID save(Task task) {
 		return persist(task).getId();
 	}
-	
-
 	
 	public void deleteCompletedTask() {
 		List<Task> taskCompleted = list(query("SELECT t FROM Task t WHERE t.taskCompleted = true"));

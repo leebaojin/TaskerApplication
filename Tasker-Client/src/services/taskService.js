@@ -1,5 +1,5 @@
 import axios from "axios";
-const env_URL = process.env.REACT_API_URL
+const env_URL = process.env.REACT_APP_APIURL
  //const REQUEST_URL = "http://localhost:8080/api/taskmanager";
 const REQUEST_URL = (env_URL==null) ? "http://152.67.99.60:8085/api/taskmanager": env_URL + "/api/taskmanager";
 class taskService{

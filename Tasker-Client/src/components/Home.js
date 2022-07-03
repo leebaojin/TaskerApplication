@@ -58,17 +58,6 @@ function Home() {
 
   }
 
-  const getDate = (unixDate) => {
-    //To convert unix timestamp to viewable date
-    var d = new Date(unixDate);
-    var yyyy = d.getFullYear().toString();
-    var mm = (d.getMonth() + 1).toString();
-    mm = mm.length > 1 ? mm : ("0" + mm);
-    var dd = d.getDate().toString();
-    dd = dd.length > 1 ? dd : ("0" + dd);
-    return yyyy + "-" + mm + "-" + dd;
-  }
-
   const addTask = (e) => {
     e.preventDefault();
     var d = null;
@@ -103,6 +92,20 @@ function Home() {
         console.log(e);
       })
     }
+  }
+
+  const deleteCompletedTask = (e) => {
+    e.preventDefault();
+    taskService.deleteCompleted().then(
+      response => {
+        console.log(response.data);
+        setTaskList([]);
+        findData();
+
+      }
+    ).catch(e => {
+      console.log(e);
+    })
   }
 
   const obtainValidDate = () => {
@@ -160,26 +163,22 @@ function Home() {
 
   }
 
+  const getDate = (unixDate) => {
+    //To convert unix timestamp to viewable date
+    var d = new Date(unixDate);
+    var yyyy = d.getFullYear().toString();
+    var mm = (d.getMonth() + 1).toString();
+    mm = mm.length > 1 ? mm : ("0" + mm);
+    var dd = d.getDate().toString();
+    dd = dd.length > 1 ? dd : ("0" + dd);
+    return yyyy + "-" + mm + "-" + dd;
+  }
+
   const clearNewTask = () => {
     setTaskDescription("");
     setTaskDate("");
 
   }
-
-  const deleteCompletedTask = (e) => {
-    e.preventDefault();
-    taskService.deleteCompleted().then(
-      response => {
-        console.log(response.data);
-        setTaskList([]);
-        findData();
-
-      }
-    ).catch(e => {
-      console.log(e);
-    })
-  }
-
 
   return (
     <div className="wrapper">

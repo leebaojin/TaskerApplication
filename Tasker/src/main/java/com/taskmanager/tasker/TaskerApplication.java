@@ -30,6 +30,7 @@ public class TaskerApplication extends Application<TaskerConfiguration> {
 
     @Override
     public void initialize(final Bootstrap<TaskerConfiguration> bootstrap) {
+    	//Add bundle
         bootstrap.addBundle(hibernate);
     }
 
