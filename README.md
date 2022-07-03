@@ -5,11 +5,11 @@
 1. Tasker (API endpoints with java script - dropwizard.io)
 2. Tasker-Client (Reactjs UI)
 3. TaskerAPITest-mocha-awesome (API endpoint test for Tasker)
-4. TaskerUI-testng-browserstack (UI testing for Tasker-Client)
+4. TaskerUI-testng (UI testing for Tasker-Client)
 
 ## API Endpoint
 ### Platform
-- Developed using dropwizard.io with maven
+- Developed using dropwizard.io framework with maven
 - Initial maven setup : 
     mvn archetype:generate -DarchetypeGroupId=io.dropwizard.archetypes -DarchetypeArtifactId=java-simple -DarchetypeVersion=2.0.0
 - Database:
@@ -115,6 +115,7 @@
         - npm install --save-dev mochawesome
     - Install chai
         - npm install chai-http
+- Running the test
     - Run the test
         - check that the package.json file (should have test:awesome under scripts)
         - place the test script in the "test" folder
@@ -132,5 +133,42 @@
     7. Delete completed task ("/api/taskmanager/clear")
     8. Verify task has been deleted ("/api/taskmanager/get/{id}")
     9. Change task 2 status and delete
+- Test details can be found: https://docs.google.com/spreadsheets/d/1VRKMAjyNwBoEFTmCUQ-iuRqF9w4R5S0r/edit?usp=sharing&ouid=111269330940438351616&rtpof=true&sd=true
 
 ### Testing the UI
+- Test written in Java using selenium and testNG
+- Dependencies
+    - selenium-java
+    - testng
+    - monte-screen-recorder
+- Others
+    - uses MyScreenRecorder (class file)from: https://github.com/naveenanimation20/ScreenRecorder
+- Running the test
+    - Open command prompt and navigate to the folder TaskerUI-testng
+    - To run the test to the webserver hosting the page
+        - Use : mvn test
+    - Alternatively, if an alternate url to be used
+        - Use : mvn test "-DUI_URL=(your url)"
+        - e.g. : mvn test "-DUI_URL=http://localhost:8080/"
+    - Obtain the result
+        - open target/surefire-reports/Surefire suite
+        - There is a report: Surefire test.html
+    - Obtain video
+        - open recordings
+        - There is a .avi video file present with the video of the test
+    - Link to a test: https://drive.google.com/file/d/1jtJW33NxN0P1qdXtBykaqabwsnO8uFo9/view?usp=sharing
+- Test Sequence:
+    1. Test that the correct site has been navigated to
+    2. Click on New button to display the new task form
+        - Verify that the form is displayed
+    3. Enter invalid date on new task form (with description blank). Click save
+        - Verify that an error is displayed
+    4. Enter the valid date and a description. Click save
+    5. Verify that the new task appear at the top of task list
+    6. Click on the "-" button to close the new task form
+        - Verify that the form is hidden
+    7. Click on checkbox of the newly created task
+        - Verify that it is checked
+    8. Click on the "clear completed" button below
+        - Verify that the checked task has been removed
+- Test details can be found: https://docs.google.com/spreadsheets/d/1VRKMAjyNwBoEFTmCUQ-iuRqF9w4R5S0r/edit?usp=sharing&ouid=111269330940438351616&rtpof=true&sd=true
