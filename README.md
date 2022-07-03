@@ -1,6 +1,13 @@
 # TaskerApplication
  Application to manage task
 
+## Overview
+This is a simple task application with the following functions:
+1. User can see a list of tasks that they have (sorted by date - earliest at top)
+2. User can add a new task to the list
+3. User can tick off the task that they have completed
+4. User can remove all the task they have completed
+
 ## Folders:
 1. Tasker (API endpoints with java script - dropwizard.io)
 2. Tasker-Client (Reactjs UI)
@@ -83,9 +90,9 @@
 - "@fortawesome/react-fontawesome": "^0.2.0"
 - "react": "^18.2.0",
 
-## Building API platform & React
+## Containerising CRUD service & UI React (with docker)
 - Navigate to the root folder of the respective component
-    - Tasker (API)
+    - Tasker (CRUD service)
     - Tasker-Client (React UI)
 - Setup the files
     - In order to run the files locally, modify the api path of the taskService
