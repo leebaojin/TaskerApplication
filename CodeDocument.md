@@ -730,7 +730,7 @@ This provides a brief summary of the setup of the compute instance for the docke
         docker pull tasker leebaojin/tasker:v1.0
     ```
 4. Run the docker images
-    - Follow instruction from earlier (4. Containerizie solution)
+    - Follow instruction from earlier [(Containerizie solution)](#4-containerizie-solution)
 #### Set up the port
 1. Return back to the oracle cloud website
 2. Go to the list of instance
