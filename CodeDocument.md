@@ -234,6 +234,7 @@ public class TaskerConfiguration extends Configuration {
        public void deleteCompletedTask()
         ```
 <br> 
+
 ### Resources and Endpoints
 - Resources stored in com.taskmanager.tasker.resources
 - The application has 1 Resource:
