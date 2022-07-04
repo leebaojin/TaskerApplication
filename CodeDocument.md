@@ -60,7 +60,9 @@ The user will be able to:
     <packaging>jar</packaging>
 ```
 - DataStorage:
-    - h2 is used for data storage as the application is simple with only 1 entity (see below)
+    - h2 is used for data storage (development) as the application is simple with only 1 entity (see below)
+        - System will need to configure for another database e.g. mysql or PostgreSQL for a more permenent solution
+        - To change the configuration file and import the required dependencies 
     - Persistance is done with the help of hibernate
     - Table creation upon start up of application
 ### Dependencies
@@ -412,7 +414,7 @@ public class TaskerConfiguration extends Configuration {
     ($env:REACT_APP_APIURL="<server>") -and (npm start)
 
     # Linux
-    REACT_APP_NOT__APIURL=<server> npm start
+    REACT_APP_APIURL=<server> npm start
 ```
 <br>
 
@@ -453,6 +455,10 @@ public class TaskerConfiguration extends Configuration {
     ```
     FROM node:alpine
 
+    # Setting up variables for change
+    ARG epURL=http://152.67.99.60:8085
+    ENV epURL_env =$epURL
+
     # Create new app directory (at the image side)
     Run mkdir /app
 
@@ -470,7 +476,10 @@ public class TaskerConfiguration extends Configuration {
     EXPOSE 3000
 
     # Default executable command
-    CMD ["npm", "start"]
+
+    CMD REACT_APP_APIURL=${epURL_env} npm start
+
+    # CMD["npm","start"]
 
     ```
 3. In the command line, build the docker image
@@ -480,9 +489,17 @@ public class TaskerConfiguration extends Configuration {
         docker build -t leebaojin/tasker:v1.0
     ```
     - Tasker-Client:
-    ```
-        docker build -t leebaojin/taskerclient:v1.0
-    ```
+        - There is an option set for the client app to specify the url of the endpoint
+        - For default, which will use the deployed end point
+        ```
+            docker build -t leebaojin/taskerclient:v1.0
+        ```
+        - To run on localhost for testing
+            - use: docker build --build-arg epURL=<new url> -t <repo>:<tag>
+        ```
+            docker build --build-arg epURL=http://localhost8080 -t test/clientapp:v0.1 .
+        ```
+    
 4. Check the images
     ```
         docker images

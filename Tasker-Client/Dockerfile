@@ -1,5 +1,9 @@
 FROM node:alpine
 
+# Setting up ARG variables for the url
+ARG epURL=http://152.67.99.60:8085
+ENV epURL_env=$epURL
+
 # Create new app directory (at the image side)
 Run mkdir /app
 
@@ -17,5 +21,7 @@ RUN npm install
 EXPOSE 3000
 
 # Default executable command
-CMD ["npm", "start"]
 
+CMD REACT_APP_APIURL=${epURL_env} npm start
+
+# CMD["npm","start"]
