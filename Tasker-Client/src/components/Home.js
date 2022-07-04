@@ -95,6 +95,8 @@ function Home() {
           this.forceUpdate();
         }
       ).catch(e => {
+        //Set back the list
+        setTaskList(mytaskList);
         console.log(e);
       })
     }
