@@ -10,6 +10,7 @@ function Home() {
   const [taskDescription, setTaskDescription] = useState("");
   const [taskDate, setTaskDate] = useState("");
   const [taskList, setTaskList] = useState([]);
+  const [tempTaskList, setTempTaskList] = useState([]);
   const [dateInputErr, setDateInputErr] = useState(false);
   const [descInputErr, setDescInputErr] = useState(false);
 
@@ -79,14 +80,19 @@ function Home() {
       setDescInputErr(true);
     }
     if (d != null) {
+      //Create a clone of the array. Set the task list to empty
+      //This is important. Otherwise, the checkboxes will not update correctly
+      var mytaskList = taskList.filter(()=>true);
+      setTaskList([]);
       taskService.addTask(taskDescription, d).then(
         response => {
           //Add to front of list
-          taskList.unshift(response.data);
-          setTaskList(taskList);
+          mytaskList.unshift(response.data);
+          setTaskList(mytaskList);
+
           clearNewTask();
           console.log(response.data);
-
+          this.forceUpdate();
         }
       ).catch(e => {
         console.log(e);
