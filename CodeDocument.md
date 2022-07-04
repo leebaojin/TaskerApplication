@@ -515,7 +515,7 @@ public class TaskerConfiguration extends Configuration {
     ```
 5. The docker images should be displayed
 6. To run the docker image in a container
-    - Use: docker run -d -p=<container_port>:<tcp_port> --name <docker_image_name>
+    - Use: docker run -d -p=<container_port>:<tcp_port> --name \<given_name> <docker_image_name>
     ```
         docker run -d -p=8080:8080 --name tasker leebaojin/tasker:v1.0
     ```
@@ -770,4 +770,79 @@ This provides a brief summary of the setup of the compute instance for the docke
     - An alternative UI testing framework using BrowserStack is in folder: TaskerUI-testng-browserstack
 
 
-## 9. Additional
+## 9. Additional (NOT IN MAIN BRANCH)
+### Database For Permenent Storage
+- The api endpoint initially use h2 as its data storage which is sufficient given its minimum storage requirement
+- However, using h2 is more for development purpose and data will be loss each time the application restarts. To overcome this, a more permenent solution is required
+#### Using MySQL as an alternative
+- Oracle cloud offers a DB system with mysql databse that can be used for data storage
+- In order to use the alternative data persistance method, it is necessary to make some changes to the config file
+    - The mysql driver is used
+    - The jdbc url is changed. 
+        - jdbc:mysql://\<host>:\<port>/\<schema>?<other_parameters>
+    - Username and password are set to environmental variables to not expose them
+    - The hibernate.hbm2ddl.auto is set to update to avoid any changes made to the table when starting programme. Additionally, the user permission is also restricted in the database
+```
+logging:
+  level: INFO
+  loggers:
+    com.taskmanager.tasker: DEBUG
+
+
+# Database settings.
+database:
+  # the name of your JDBC driver
+  driverClass: com.mysql.cj.jdbc.Driver
+
+  # the username
+  user: ${DW_DBUSER}
+
+  # the password
+  password: ${DW_DBPASS}
+
+  # the JDBC URL
+  url: jdbc:mysql://10.10.10.0:3306/taskdata?useSSL=false&serverTimezone=Asia/Singapore&createDatabaseIfNotExist=true
+
+  # any properties specific to your JDBC driver:
+  properties:
+    charSet: UTF-8
+    hibernate.hbm2ddl.auto: update
+
+  # the maximum amount of time to wait on an empty pool before throwing an exception
+  maxWaitForConnection: 3s
+
+  # the SQL query to run when validating a connection's liveness
+  validationQuery: "/* MyApplication Health Check */ SELECT 1"
+```
+### Enabling Dropwizard Environment Variable
+- Dropwizard allows the use of environmental variables in its config file.
+- However, SubstitutingSourceProvider and EnvironmentVariableSubstitutor needs to be used
+- This must be added at the initialize method in the TaskerApplication.java
+```
+@Override
+    public void initialize(final Bootstrap<TaskerConfiguration> bootstrap) {
+    	//Add bundle
+        bootstrap.addBundle(hibernate);
+        
+        //To allow for environmental variables to be used in config.yml file
+        bootstrap.setConfigurationSourceProvider(new SubstitutingSourceProvider(bootstrap.getConfigurationSourceProvider(), new EnvironmentVariableSubstitutor(false)));
+    }
+```
+- EnvironmentVariableSubstitutor(false) 
+    - In this case, the attribute strict is set to false 
+    - If true, an UndefinedEnvironmentVariableException will be thrown if looking up an undefined environmental variable
+    - For more: https://javadoc.io/static/io.dropwizard/dropwizard-configuration/2.0.0-rc12/io/dropwizard/configuration/EnvironmentVariableSubstitutor.html
+### Deploying the image
+- The building of the docker file remains the same as in [(4. Containerize Solution)](#4-containerizie-solution). 
+- However, the environmental variables for the username and password needs to be declared during run time.
+- The docker run will be as follows:
+    - docker run -d -p=<container_port>:<tcp_port> -e DW_DBUSER='\<user>' -e DW_DBPASS='\<password>' --name \<given_name> <docker_image_name>
+    - An example:
+```
+docker run -d -p=8081:8080 -e DW_DBUSER='user' -e DW_DBPASS='password' --name myapp myrepo/appname:v0.1
+```
+### Deployed Image
+- An image has been deployed and tested at http://152.67.99.60:8088/
+- To use it, change the host (epURL) of the UI component [(refer to 7. deployment)](#7-deployment)
+### File with the updated code for using mysql
+- A branch called test_mysql has the updated codes
