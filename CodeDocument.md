@@ -32,6 +32,8 @@
     - Platform
     - Details
 8. [Folders](#8-folders)
+9. [Additional](#9-additional)
+    - Database (permenent storage)
 <br>
 
 ## 1. Application Functions
@@ -72,6 +74,7 @@ The user will be able to:
     - dropwizard-db
     - dropwizard-hibernate
     - h2
+    - mysql (not used but can be used if a more permenent database is required)
 ```
     <dependencies>
 		<dependency>
@@ -89,6 +92,12 @@ The user will be able to:
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+        <dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.28</version>
 			<scope>runtime</scope>
 		</dependency>
 	</dependencies>
@@ -497,7 +506,7 @@ public class TaskerConfiguration extends Configuration {
         - To run on localhost for testing
             - use: docker build --build-arg epURL=<new url> -t <repo>:<tag>
         ```
-            docker build --build-arg epURL=http://localhost8080 -t test/clientapp:v0.1 .
+            docker build --build-arg epURL=http://localhost:8080 -t test/clientapp:v0.1 .
         ```
     
 4. Check the images
@@ -761,4 +770,4 @@ This provides a brief summary of the setup of the compute instance for the docke
     - An alternative UI testing framework using BrowserStack is in folder: TaskerUI-testng-browserstack
 
 
-
+## 9. Additional

@@ -12,6 +12,8 @@ import com.taskmanager.tasker.db.TaskDAO;
 import com.taskmanager.tasker.resources.TaskManagerResource;
 
 import io.dropwizard.Application;
+import io.dropwizard.configuration.EnvironmentVariableSubstitutor;
+import io.dropwizard.configuration.SubstitutingSourceProvider;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.hibernate.HibernateBundle;
 import io.dropwizard.setup.Bootstrap;
@@ -32,6 +34,9 @@ public class TaskerApplication extends Application<TaskerConfiguration> {
     public void initialize(final Bootstrap<TaskerConfiguration> bootstrap) {
     	//Add bundle
         bootstrap.addBundle(hibernate);
+        
+        //To allow for environmental variables to be used in config.yml file
+        bootstrap.setConfigurationSourceProvider(new SubstitutingSourceProvider(bootstrap.getConfigurationSourceProvider(), new EnvironmentVariableSubstitutor(false)));
     }
 
     @Override

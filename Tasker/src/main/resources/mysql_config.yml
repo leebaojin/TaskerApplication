@@ -1,0 +1,31 @@
+logging:
+  level: INFO
+  loggers:
+    com.taskmanager.tasker: DEBUG
+
+
+# Database settings.
+database:
+  # the name of your JDBC driver
+  driverClass: com.mysql.cj.jdbc.Driver
+
+
+  # the username
+  user: ${DW_DBUSER}
+
+  # the password
+  password: ${DW_DBPASS}
+
+  # the JDBC URL
+  url: jdbc:mysql://10.0.0.200:3306/taskdata?useSSL=false&serverTimezone=Asia/Singapore&createDatabaseIfNotExist=true
+
+  # any properties specific to your JDBC driver:
+  properties:
+    charSet: UTF-8
+    hibernate.hbm2ddl.auto: update
+
+  # the maximum amount of time to wait on an empty pool before throwing an exception
+  maxWaitForConnection: 3s
+
+  # the SQL query to run when validating a connection's liveness
+  validationQuery: "/* MyApplication Health Check */ SELECT 1"
