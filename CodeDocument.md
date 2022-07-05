@@ -670,7 +670,7 @@ public class TaskerConfiguration extends Configuration {
     - Go back to : TaskerUI-testng
     - open : recordings
     - The video recordings are stored in this location
-5. Sample recording: https://drive.google.com/file/d/1jtJW33NxN0P1qdXtBykaqabwsnO8uFo9/view?usp=sharing
+5. Sample recording: https://drive.google.com/file/d/1w_X_-uLMJ3Sc5Fgd7VKUjGMI4OS3oe1T/view?usp=sharing
 <br>
 
 ## 7. Deployment

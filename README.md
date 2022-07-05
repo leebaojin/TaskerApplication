@@ -20,7 +20,7 @@ http://150.230.10.235:3000
 ## Test Results
 1. API endpoint : TaskerAPITest-mocha-awesome/mochawesome-report/mochawesome.html
 2. UI Testing : TaskerUI-testng/target/surefire-reports/Surefire suite/Surefire test.html
-3. Sample UI Test Video: https://drive.google.com/file/d/1jtJW33NxN0P1qdXtBykaqabwsnO8uFo9/view?usp=sharing
+3. Sample UI Test Video: https://drive.google.com/file/d/1w_X_-uLMJ3Sc5Fgd7VKUjGMI4OS3oe1T/view?usp=sharing
 
 ## Test Details
 https://docs.google.com/spreadsheets/d/1VRKMAjyNwBoEFTmCUQ-iuRqF9w4R5S0r/edit?usp=sharing&ouid=111269330940438351616&rtpof=true&sd=true
