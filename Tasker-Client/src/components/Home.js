@@ -10,7 +10,6 @@ function Home() {
   const [taskDescription, setTaskDescription] = useState("");
   const [taskDate, setTaskDate] = useState("");
   const [taskList, setTaskList] = useState([]);
-  const [tempTaskList, setTempTaskList] = useState([]);
   const [dateInputErr, setDateInputErr] = useState(false);
   const [descInputErr, setDescInputErr] = useState(false);
 

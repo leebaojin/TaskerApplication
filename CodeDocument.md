@@ -642,7 +642,14 @@ public class TaskerConfiguration extends Configuration {
         - Verify that the form is hidden
 7. Click on checkbox of the newly created task
         - Verify that it is checked
-8. Click on the "clear completed" button below
+8. Open the form for new task
+9. Enter another valid date and description. Click save
+        - verify that another new task appear
+        - Verify that new entry checkbox is not checked
+        - verify that old entry checkbox is checked
+10. Click on the "-" to close new task form
+11. Check the box for the task created
+12. Click on the "clear completed" button below
         - Verify that the checked task has been removed
 
 - Test details can be found: https://docs.google.com/spreadsheets/d/1VRKMAjyNwBoEFTmCUQ-iuRqF9w4R5S0r/edit?usp=sharing&ouid=111269330940438351616&rtpof=true&sd=true
